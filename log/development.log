@@ -1,0 +1,338 @@
+  [1m[35m (3.5ms)[0m  [1m[35mCREATE DATABASE `training_curriculum_rails7_development` DEFAULT CHARACTER SET `utf8mb4`[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE DATABASE `training_curriculum_rails7_test` DEFAULT CHARACTER SET `utf8mb4`[0m
+  [1m[35m (29.4ms)[0m  [1m[35mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL PRIMARY KEY)[0m
+  [1m[35m (9.1ms)[0m  [1m[35mCREATE TABLE `ar_internal_metadata` (`key` varchar(255) NOT NULL PRIMARY KEY, `value` varchar(255), `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT GET_LOCK('2535677301063899895', 0)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.0ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Migrating to CreatePlans (20230603133754)
+  [1m[35m (8.5ms)[0m  [1m[35mCREATE TABLE `plans` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `plan` varchar(255), `date` date, `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL)[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.7ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20230603133754')[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (1.5ms)[0m  [1m[32mINSERT INTO `ar_internal_metadata` (`key`, `value`, `created_at`, `updated_at`) VALUES ('environment', 'development', '2023-07-21 10:58:20.716707', '2023-07-21 10:58:20.716707')[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT RELEASE_LOCK('2535677301063899895')[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Started GET "/" for ::1 at 2023-07-21 19:58:41 +0900
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by CalendarsController#index as HTML
+  [1m[36mPlan Load (1.8ms)[0m  [1m[34mSELECT `plans`.* FROM `plans` WHERE `plans`.`date` BETWEEN '2023-07-21' AND '2023-07-27'[0m
+  ↳ app/controllers/calendars_controller.rb:34:in `block in getWeek'
+  Rendering layout layouts/application.html.erb
+  Rendering calendars/index.html.erb within layouts/application
+  Rendered calendars/index.html.erb within layouts/application (Duration: 11.3ms | Allocations: 4015)
+  Rendered layout layouts/application.html.erb (Duration: 237.8ms | Allocations: 99441)
+Completed 200 OK in 265ms (Views: 241.9ms | ActiveRecord: 4.2ms | Allocations: 113114)
+
+
+Started POST "/calendars" for ::1 at 2023-07-21 19:59:04 +0900
+Processing by CalendarsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "plan"=>{"date"=>"2023-07-04", "plan"=>"ご飯"}, "commit"=>"保存"}
+Completed 400 Bad Request in 2ms (ActiveRecord: 0.0ms | Allocations: 1293)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: calendars):
+  
+app/controllers/calendars_controller.rb:18:in `plan_params'
+app/controllers/calendars_controller.rb:11:in `create'
+Started GET "/" for ::1 at 2023-07-21 19:59:04 +0900
+Processing by CalendarsController#index as HTML
+  [1m[36mPlan Load (0.4ms)[0m  [1m[34mSELECT `plans`.* FROM `plans` WHERE `plans`.`date` BETWEEN '2023-07-21' AND '2023-07-27'[0m
+  ↳ app/controllers/calendars_controller.rb:34:in `block in getWeek'
+  Rendering layout layouts/application.html.erb
+  Rendering calendars/index.html.erb within layouts/application
+  Rendered calendars/index.html.erb within layouts/application (Duration: 1.0ms | Allocations: 1373)
+  Rendered layout layouts/application.html.erb (Duration: 3.1ms | Allocations: 3652)
+Completed 200 OK in 5ms (Views: 3.3ms | ActiveRecord: 0.4ms | Allocations: 4615)
+
+
+Started POST "/calendars" for ::1 at 2023-07-21 19:59:14 +0900
+Processing by CalendarsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "plan"=>{"date"=>"2023-07-27", "plan"=>"ご飯"}, "commit"=>"保存"}
+Completed 400 Bad Request in 5ms (ActiveRecord: 0.0ms | Allocations: 1181)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: calendars):
+  
+app/controllers/calendars_controller.rb:18:in `plan_params'
+app/controllers/calendars_controller.rb:11:in `create'
+Started GET "/" for ::1 at 2023-07-21 19:59:14 +0900
+Processing by CalendarsController#index as HTML
+  [1m[36mPlan Load (0.3ms)[0m  [1m[34mSELECT `plans`.* FROM `plans` WHERE `plans`.`date` BETWEEN '2023-07-21' AND '2023-07-27'[0m
+  ↳ app/controllers/calendars_controller.rb:34:in `block in getWeek'
+  Rendering layout layouts/application.html.erb
+  Rendering calendars/index.html.erb within layouts/application
+  Rendered calendars/index.html.erb within layouts/application (Duration: 1.0ms | Allocations: 1367)
+  Rendered layout layouts/application.html.erb (Duration: 4.6ms | Allocations: 3646)
+Completed 200 OK in 6ms (Views: 4.8ms | ActiveRecord: 0.3ms | Allocations: 4605)
+
+
+Started GET "/" for ::1 at 2023-07-21 20:15:14 +0900
+  [1m[36mActiveRecord::SchemaMigration Pluck (2.0ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by CalendarsController#index as HTML
+  [1m[36mPlan Load (2.2ms)[0m  [1m[34mSELECT `plans`.* FROM `plans` WHERE `plans`.`date` BETWEEN '2023-07-21' AND '2023-07-27'[0m
+  ↳ app/controllers/calendars_controller.rb:34:in `block in getWeek'
+  Rendering layout layouts/application.html.erb
+  Rendering calendars/index.html.erb within layouts/application
+  Rendered calendars/index.html.erb within layouts/application (Duration: 13.1ms | Allocations: 3366)
+  Rendered layout layouts/application.html.erb (Duration: 45.6ms | Allocations: 36923)
+Completed 200 OK in 65ms (Views: 47.3ms | ActiveRecord: 6.2ms | Allocations: 47556)
+
+
+Started GET "/" for ::1 at 2023-07-21 20:26:00 +0900
+Processing by CalendarsController#index as HTML
+  [1m[36mPlan Load (1.2ms)[0m  [1m[34mSELECT `plans`.* FROM `plans` WHERE `plans`.`date` BETWEEN '2023-07-21' AND '2023-07-27'[0m
+  ↳ app/controllers/calendars_controller.rb:34:in `block in get_Week'
+  Rendering layout layouts/application.html.erb
+  Rendering calendars/index.html.erb within layouts/application
+  Rendered calendars/index.html.erb within layouts/application (Duration: 2.1ms | Allocations: 1482)
+  Rendered layout layouts/application.html.erb (Duration: 15.2ms | Allocations: 14570)
+Completed 200 OK in 24ms (Views: 15.8ms | ActiveRecord: 2.1ms | Allocations: 17752)
+
+
+Started GET "/" for ::1 at 2023-07-21 20:26:01 +0900
+Processing by CalendarsController#index as HTML
+  [1m[36mPlan Load (1.0ms)[0m  [1m[34mSELECT `plans`.* FROM `plans` WHERE `plans`.`date` BETWEEN '2023-07-21' AND '2023-07-27'[0m
+  ↳ app/controllers/calendars_controller.rb:34:in `block in get_Week'
+  Rendering layout layouts/application.html.erb
+  Rendering calendars/index.html.erb within layouts/application
+  Rendered calendars/index.html.erb within layouts/application (Duration: 2.5ms | Allocations: 1388)
+  Rendered layout layouts/application.html.erb (Duration: 8.1ms | Allocations: 3633)
+Completed 200 OK in 15ms (Views: 8.8ms | ActiveRecord: 1.0ms | Allocations: 4593)
+
+
+Started GET "/" for ::1 at 2023-07-21 20:27:38 +0900
+Processing by CalendarsController#index as HTML
+  [1m[36mPlan Load (0.6ms)[0m  [1m[34mSELECT `plans`.* FROM `plans` WHERE `plans`.`date` BETWEEN '2023-07-21' AND '2023-07-27'[0m
+  ↳ app/controllers/calendars_controller.rb:34:in `block in get_Week'
+  Rendering layout layouts/application.html.erb
+  Rendering calendars/index.html.erb within layouts/application
+  Rendered calendars/index.html.erb within layouts/application (Duration: 4.6ms | Allocations: 1856)
+  Rendered layout layouts/application.html.erb (Duration: 10.9ms | Allocations: 4371)
+Completed 200 OK in 18ms (Views: 13.3ms | ActiveRecord: 0.6ms | Allocations: 5888)
+
+
+Started GET "/" for ::1 at 2023-07-21 20:27:39 +0900
+Processing by CalendarsController#index as HTML
+  [1m[36mPlan Load (1.5ms)[0m  [1m[34mSELECT `plans`.* FROM `plans` WHERE `plans`.`date` BETWEEN '2023-07-21' AND '2023-07-27'[0m
+  ↳ app/controllers/calendars_controller.rb:34:in `block in get_Week'
+  Rendering layout layouts/application.html.erb
+  Rendering calendars/index.html.erb within layouts/application
+  Rendered calendars/index.html.erb within layouts/application (Duration: 4.5ms | Allocations: 1364)
+  Rendered layout layouts/application.html.erb (Duration: 8.8ms | Allocations: 3609)
+Completed 200 OK in 15ms (Views: 9.7ms | ActiveRecord: 1.5ms | Allocations: 4560)
+
+
+Started GET "/" for ::1 at 2023-07-21 20:28:35 +0900
+Processing by CalendarsController#index as HTML
+  [1m[36mPlan Load (0.4ms)[0m  [1m[34mSELECT `plans`.* FROM `plans` WHERE `plans`.`date` BETWEEN '2023-07-21' AND '2023-07-27'[0m
+  ↳ app/controllers/calendars_controller.rb:34:in `block in get_Week'
+  Rendering layout layouts/application.html.erb
+  Rendering calendars/index.html.erb within layouts/application
+  Rendered calendars/index.html.erb within layouts/application (Duration: 2.7ms | Allocations: 1877)
+  Rendered layout layouts/application.html.erb (Duration: 7.9ms | Allocations: 4391)
+Completed 200 OK in 14ms (Views: 9.5ms | ActiveRecord: 0.4ms | Allocations: 5894)
+
+
+Started GET "/" for ::1 at 2023-07-21 20:28:35 +0900
+Processing by CalendarsController#index as HTML
+  [1m[36mPlan Load (0.6ms)[0m  [1m[34mSELECT `plans`.* FROM `plans` WHERE `plans`.`date` BETWEEN '2023-07-21' AND '2023-07-27'[0m
+  ↳ app/controllers/calendars_controller.rb:34:in `block in get_Week'
+  Rendering layout layouts/application.html.erb
+  Rendering calendars/index.html.erb within layouts/application
+  Rendered calendars/index.html.erb within layouts/application (Duration: 3.3ms | Allocations: 1364)
+  Rendered layout layouts/application.html.erb (Duration: 7.0ms | Allocations: 3608)
+Completed 200 OK in 11ms (Views: 7.5ms | ActiveRecord: 0.6ms | Allocations: 4558)
+
+
+Started GET "/" for ::1 at 2023-07-21 20:34:23 +0900
+Processing by CalendarsController#index as HTML
+  [1m[36mPlan Load (4.0ms)[0m  [1m[34mSELECT `plans`.* FROM `plans` WHERE `plans`.`date` BETWEEN '2023-07-21' AND '2023-07-27'[0m
+  ↳ app/controllers/calendars_controller.rb:34:in `block in get_Week'
+  Rendering layout layouts/application.html.erb
+  Rendering calendars/index.html.erb within layouts/application
+  Rendered calendars/index.html.erb within layouts/application (Duration: 20.5ms | Allocations: 9268)
+  Rendered layout layouts/application.html.erb (Duration: 20.7ms | Allocations: 9358)
+Completed 500 Internal Server Error in 52ms (ActiveRecord: 4.9ms | Allocations: 10983)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <%= form_with model: @plan, url: calendars_path, class: 'form' do |f| %>
+    <%= f.label :日付を選択, %>
+    <%= f.date_field :date, class: 'date-select' %>
+    <%= f.label :予定を入力, class: 'lavel' %>
+    <%= f.text_field :plan, class: 'text-input' %>
+    <%= f.submit '保存' %>
+  <% end %>
+  <div class='calendar'>
+    <% @week_days.each do |day| %>
+      <div class='item'>
+        <div class='date'>
+          <% day[:month] %>/<% day[:date] %>
+        </div>
+        <ul class='content'>
+        <% if day[:plans].length != 0 %>
+          <% day[:plans].each do |plan| %>
+            <li class='plan-list'>・<%= plan %></li>
+          <% end %>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+</div>
+):
+1:    <%= form_with model: @plan, url: calendars_path, class: 'form' do |f| %>
+2:        <%= f.label :日付を選択, %>
+3:        <%= f.date_field :date, class: 'date-select' %>
+4:        <%= f.label :予定を入力, class: 'lavel' %>
+5:        <%= f.text_field :plan, class: 'text-input' %>
+6:        <%= f.submit '保存' %>
+7:      <% end %>
+8:      <div class='calendar'>
+9:        <% @week_days.each do |day| %>
+10:          <div class='item'>
+11:            <div class='date'>
+12:              <% day[:month] %>/<% day[:date] %>
+13:            </div>
+14:            <ul class='content'>
+15:            <% if day[:plans].length != 0 %>
+16:              <% day[:plans].each do |plan| %>
+17:                <li class='plan-list'>・<%= plan %></li>
+18:              <% end %>
+19:            <% end %>
+20:            </ul>
+21:          </div>
+22:        <% end %>
+23:    </div>
+  
+app/views/calendars/index.html.erb:2: syntax error, unexpected ')'
+app/views/calendars/index.html.erb:2: syntax error, unexpected ')'
+app/views/calendars/index.html.erb:2: syntax error, unexpected ')'
+app/views/calendars/index.html.erb:2: syntax error, unexpected ')'
+app/views/calendars/index.html.erb:2: syntax error, unexpected ')'
+app/views/calendars/index.html.erb:2: syntax error, unexpected ')'
+Started GET "/" for ::1 at 2023-07-21 20:34:32 +0900
+Processing by CalendarsController#index as HTML
+  [1m[36mPlan Load (0.4ms)[0m  [1m[34mSELECT `plans`.* FROM `plans` WHERE `plans`.`date` BETWEEN '2023-07-21' AND '2023-07-27'[0m
+  ↳ app/controllers/calendars_controller.rb:34:in `block in get_Week'
+  Rendering layout layouts/application.html.erb
+  Rendering calendars/index.html.erb within layouts/application
+  Rendered calendars/index.html.erb within layouts/application (Duration: 4.0ms | Allocations: 1846)
+  Rendered layout layouts/application.html.erb (Duration: 10.7ms | Allocations: 4398)
+Completed 200 OK in 14ms (Views: 11.8ms | ActiveRecord: 0.4ms | Allocations: 5905)
+
+
+Started GET "/" for ::1 at 2023-07-21 20:34:47 +0900
+Processing by CalendarsController#index as HTML
+  [1m[36mPlan Load (0.4ms)[0m  [1m[34mSELECT `plans`.* FROM `plans` WHERE `plans`.`date` BETWEEN '2023-07-21' AND '2023-07-27'[0m
+  ↳ app/controllers/calendars_controller.rb:34:in `block in get_Week'
+  Rendering layout layouts/application.html.erb
+  Rendering calendars/index.html.erb within layouts/application
+  Rendered calendars/index.html.erb within layouts/application (Duration: 1.7ms | Allocations: 1842)
+  Rendered layout layouts/application.html.erb (Duration: 4.5ms | Allocations: 4356)
+Completed 200 OK in 8ms (Views: 5.7ms | ActiveRecord: 0.4ms | Allocations: 5859)
+
+
+Started GET "/" for ::1 at 2023-07-21 20:34:48 +0900
+Processing by CalendarsController#index as HTML
+  [1m[36mPlan Load (0.8ms)[0m  [1m[34mSELECT `plans`.* FROM `plans` WHERE `plans`.`date` BETWEEN '2023-07-21' AND '2023-07-27'[0m
+  ↳ app/controllers/calendars_controller.rb:34:in `block in get_Week'
+  Rendering layout layouts/application.html.erb
+  Rendering calendars/index.html.erb within layouts/application
+  Rendered calendars/index.html.erb within layouts/application (Duration: 3.4ms | Allocations: 1373)
+  Rendered layout layouts/application.html.erb (Duration: 7.8ms | Allocations: 3617)
+Completed 200 OK in 14ms (Views: 9.1ms | ActiveRecord: 0.8ms | Allocations: 4565)
+
+
+Started GET "/" for ::1 at 2023-07-21 20:34:53 +0900
+Processing by CalendarsController#index as HTML
+  [1m[36mPlan Load (0.4ms)[0m  [1m[34mSELECT `plans`.* FROM `plans` WHERE `plans`.`date` BETWEEN '2023-07-21' AND '2023-07-27'[0m
+  ↳ app/controllers/calendars_controller.rb:34:in `block in get_Week'
+  Rendering layout layouts/application.html.erb
+  Rendering calendars/index.html.erb within layouts/application
+  Rendered calendars/index.html.erb within layouts/application (Duration: 2.4ms | Allocations: 1867)
+  Rendered layout layouts/application.html.erb (Duration: 5.8ms | Allocations: 4381)
+Completed 200 OK in 13ms (Views: 10.0ms | ActiveRecord: 0.4ms | Allocations: 5883)
+
+
+Started GET "/" for ::1 at 2023-07-21 20:37:08 +0900
+Processing by CalendarsController#index as HTML
+  [1m[36mPlan Load (0.6ms)[0m  [1m[34mSELECT `plans`.* FROM `plans` WHERE `plans`.`date` BETWEEN '2023-07-21' AND '2023-07-27'[0m
+  ↳ app/controllers/calendars_controller.rb:34:in `block in get_Week'
+  Rendering layout layouts/application.html.erb
+  Rendering calendars/index.html.erb within layouts/application
+  Rendered calendars/index.html.erb within layouts/application (Duration: 2.6ms | Allocations: 1822)
+  Rendered layout layouts/application.html.erb (Duration: 8.3ms | Allocations: 4336)
+Completed 200 OK in 15ms (Views: 10.6ms | ActiveRecord: 0.6ms | Allocations: 5839)
+
+
+Started GET "/" for ::1 at 2023-07-21 20:37:09 +0900
+Processing by CalendarsController#index as HTML
+  [1m[36mPlan Load (1.1ms)[0m  [1m[34mSELECT `plans`.* FROM `plans` WHERE `plans`.`date` BETWEEN '2023-07-21' AND '2023-07-27'[0m
+  ↳ app/controllers/calendars_controller.rb:34:in `block in get_Week'
+  Rendering layout layouts/application.html.erb
+  Rendering calendars/index.html.erb within layouts/application
+  Rendered calendars/index.html.erb within layouts/application (Duration: 2.6ms | Allocations: 1358)
+  Rendered layout layouts/application.html.erb (Duration: 7.2ms | Allocations: 3602)
+Completed 200 OK in 15ms (Views: 7.8ms | ActiveRecord: 1.1ms | Allocations: 4550)
+
+
+Started GET "/" for ::1 at 2023-07-21 20:37:13 +0900
+Processing by CalendarsController#index as HTML
+  [1m[36mPlan Load (0.4ms)[0m  [1m[34mSELECT `plans`.* FROM `plans` WHERE `plans`.`date` BETWEEN '2023-07-21' AND '2023-07-27'[0m
+  ↳ app/controllers/calendars_controller.rb:34:in `block in get_Week'
+  Rendering layout layouts/application.html.erb
+  Rendering calendars/index.html.erb within layouts/application
+  Rendered calendars/index.html.erb within layouts/application (Duration: 1.5ms | Allocations: 1843)
+  Rendered layout layouts/application.html.erb (Duration: 3.4ms | Allocations: 4357)
+Completed 200 OK in 7ms (Views: 4.4ms | ActiveRecord: 0.4ms | Allocations: 5859)
+
+
+Started GET "/" for ::1 at 2023-07-21 20:37:13 +0900
+Processing by CalendarsController#index as HTML
+  [1m[36mPlan Load (1.3ms)[0m  [1m[34mSELECT `plans`.* FROM `plans` WHERE `plans`.`date` BETWEEN '2023-07-21' AND '2023-07-27'[0m
+  ↳ app/controllers/calendars_controller.rb:34:in `block in get_Week'
+  Rendering layout layouts/application.html.erb
+  Rendering calendars/index.html.erb within layouts/application
+  Rendered calendars/index.html.erb within layouts/application (Duration: 2.9ms | Allocations: 1364)
+  Rendered layout layouts/application.html.erb (Duration: 7.2ms | Allocations: 3608)
+Completed 200 OK in 14ms (Views: 8.0ms | ActiveRecord: 1.3ms | Allocations: 4556)
+
+
+Started POST "/calendars" for ::1 at 2023-07-21 20:37:15 +0900
+Processing by CalendarsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "plan"=>{"date"=>"", "plan"=>"za"}, "commit"=>"保存"}
+Completed 400 Bad Request in 2ms (ActiveRecord: 0.0ms | Allocations: 1224)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: calendars):
+  
+app/controllers/calendars_controller.rb:18:in `plan_params'
+app/controllers/calendars_controller.rb:11:in `create'
+Started GET "/" for ::1 at 2023-07-21 20:37:15 +0900
+Processing by CalendarsController#index as HTML
+  [1m[36mPlan Load (0.4ms)[0m  [1m[34mSELECT `plans`.* FROM `plans` WHERE `plans`.`date` BETWEEN '2023-07-21' AND '2023-07-27'[0m
+  ↳ app/controllers/calendars_controller.rb:34:in `block in get_Week'
+  Rendering layout layouts/application.html.erb
+  Rendering calendars/index.html.erb within layouts/application
+  Rendered calendars/index.html.erb within layouts/application (Duration: 1.0ms | Allocations: 1370)
+  Rendered layout layouts/application.html.erb (Duration: 3.1ms | Allocations: 3652)
+Completed 200 OK in 5ms (Views: 3.3ms | ActiveRecord: 0.4ms | Allocations: 4603)
+
+
+Started GET "/" for ::1 at 2023-07-22 20:19:09 +0900
+Processing by CalendarsController#index as HTML
+  [1m[36mPlan Load (30.4ms)[0m  [1m[34mSELECT `plans`.* FROM `plans` WHERE `plans`.`date` BETWEEN '2023-07-22' AND '2023-07-28'[0m
+  ↳ app/controllers/calendars_controller.rb:34:in `block in get_Week'
+  Rendering layout layouts/application.html.erb
+  Rendering calendars/index.html.erb within layouts/application
+  Rendered calendars/index.html.erb within layouts/application (Duration: 15.9ms | Allocations: 1376)
+  Rendered layout layouts/application.html.erb (Duration: 23.6ms | Allocations: 3620)
+Completed 200 OK in 123ms (Views: 24.6ms | ActiveRecord: 49.5ms | Allocations: 4678)
+
+
